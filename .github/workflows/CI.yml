@@ -41,4 +41,4 @@ jobs:
         path: |
           test-resources/screenshots/*.png
           test-resources/*.log
-        retention-days: 3
+      if: always()
