@@ -26,12 +26,15 @@ jobs:
       run: |
         npm install
         npm run vscode:prepublish
-    - name: Run tests
+    - name: Run Unit tests
       uses: GabrielBB/xvfb-action@v1.0
       with:
-        run: |
-          npm test --silent
-          npm run ui-test
+        run: npm test --silent
+    - name: Run UI tests
+      uses: GabrielBB/xvfb-action@v1.0
+      with:
+        run: npm run ui-test
+        working-directory: $GITHUB_WORKSPACE
     - name: Archiving test artifacts
       uses: actions/upload-artifact@v2
       with: 
