@@ -27,13 +27,9 @@ jobs:
         npm install
         npm run vscode:prepublish
     - name: Run Unit tests
-      uses: GabrielBB/xvfb-action@v1.0
-      with:
-        run: -s '-screen 0 1280x1024x24' npm test --silent
+      run: xvfb-run --auto-servernum -s '-screen 0 1280x1024x24' npm test --silent
     - name: Run UI tests
-      uses: GabrielBB/xvfb-action@v1.0
-      with:
-        run: -s '-screen 0 1280x1024x24' npm run ui-test      
+      run: xvfb-run --auto-servernum -s '-screen 0 1280x1024x24' npm run ui-test
     - name: Archiving test artifacts
       uses: actions/upload-artifact@v2
       with: 
